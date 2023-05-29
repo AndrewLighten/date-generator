@@ -7,7 +7,7 @@ if __name__ == '__main__':
     today = datetime.date.today()
 
     # Format this as the filename for the output
-    filename = today.strftime('/Users/andrew/Documents/Spotlight/Daily Notes/%Y-Calendar.md')
+    filename = today.strftime('./%Y-Calendar.md')
 
     # Find the first day of the year
     current_date = datetime.date(today.year, 1, 1)
