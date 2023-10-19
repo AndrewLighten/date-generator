@@ -1,17 +1,19 @@
 import datetime
+import sys
 from typing import List
 
-if __name__ == '__main__':
 
-    # Find the current date
-    today = datetime.date.today()
+def main(when: datetime.date = datetime.date.today()) -> None:
+    """
+    This is the main function.
+    """
 
     # Format this as the filename for the output
-    filename = today.strftime('./%Y-Calendar.md')
+    filename = when.strftime('./%Y-Calendar.md')
 
     # Find the first day of the year
-    current_date = datetime.date(today.year, 1, 1)
-    start_year = today.year
+    current_date = datetime.date(when.year, 1, 1)
+    start_year = when.year
     lines: List[str] = []
 
     # Visit each day until we find ourselves in the next year
@@ -26,3 +28,12 @@ if __name__ == '__main__':
     # Open the file for writing
     with open(filename, 'w') as f:
         f.writelines(lines)
+
+
+# --------------------------------------------------
+
+if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        main(when=datetime.date.fromisoformat(sys.argv[1]))
+    else:
+        main()
